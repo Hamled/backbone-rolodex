@@ -1,0 +1,11 @@
+{
+  "name": "backbone-rolodex",
+  "version": "1.0.0",
+  "description": "Basic rolodex application in Backbone.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Charles Ellis",
+  "license": "MIT"
+}
