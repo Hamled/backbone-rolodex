@@ -12,9 +12,15 @@ const EntryForm = Backbone.View.extend({
   },
 
   onAdd: function(e) {
-    this.trigger('submit', {
-      name: this.$('.add-entry-name').val()
+    var self = this;
+    var fields = ['name', 'organization', 'phone'];
+    var fieldInputs = _.map(fields, function(field) {
+      return self.$(`.add-entry-${field}`);
     });
+
+    this.trigger('submit', _.object(fields, _.map(fieldInputs, function(input) {
+      return input.val();
+    })));
   },
 
   // RENDERING
