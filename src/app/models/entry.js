@@ -20,4 +20,4 @@ const Entries = Backbone.Collection.extend({
 });
 
 export default Entry;
-export { Entries };
+export { Entry, Entries };
