@@ -42,19 +42,22 @@ const EntryCard = Backbone.View.extend({
 
   // RENDERING
   render: function() {
+    var self = this;
     this.$('*').detach();
     this.$el.append(_.flatten([
-      this.renderName(this.model.get('name')),
+      _.map(['name'], function(field) {
+        return self.renderField(field, self.model.get(field));
+      }),
       this.renderControls()
     ]));
     return this;
   },
 
-  renderName: function(name) {
+  renderField: function(name, value) {
     if(this.editing) {
-      return Backbone.$('<input type="text" class="entry-card-name">').val(name);
+      return Backbone.$(`<input type="text" class="entry-card-${name}">`).val(value);
     } else {
-      return Backbone.$('<p></p>').html(name);
+      return Backbone.$('<p></p>').html(value);
     }
   },
 
