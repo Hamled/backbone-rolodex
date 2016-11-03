@@ -33,7 +33,7 @@ const EntryCard = Backbone.View.extend({
 
   onSave: function(e) {
     var self = this;
-    var fields = ['name'];
+    var fields = ['name', 'organization', 'phone'];
     this.model.updateEntry(_.object(fields, _.map(fields, function(field) {
       return self.$(`.entry-card-${field}`).val();
     })));
@@ -47,7 +47,7 @@ const EntryCard = Backbone.View.extend({
     var self = this;
     this.$('*').detach();
     this.$el.append(_.flatten([
-      _.map(['name'], function(field) {
+      _.map(['name', 'organization', 'phone'], function(field) {
         return self.renderField(field, self.model.get(field));
       }),
       this.renderControls()

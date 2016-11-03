@@ -32,6 +32,8 @@ const EntryForm = Backbone.View.extend({
     this.$el.append(Backbone.$(`
       <h3>Add a new entry</h3>
       ${this.inputTemplate('name')}
+      ${this.inputTemplate('organization')}
+      ${this.inputTemplate('phone')}
       <button class="add-entry-btn">Add</button>
     `));
     return this;
