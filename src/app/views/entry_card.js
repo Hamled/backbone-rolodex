@@ -8,6 +8,7 @@ const EntryCard = Backbone.View.extend({
     // Static components
     this.editBtn = Backbone.$('<button class="btn-edit">Edit</button>');
     this.cancelBtn = Backbone.$('<button class="btn-cancel">Cancel</button>');
+    this.saveBtn = Backbone.$('<button class="btn-save">Save</button>');
 
     this.listenTo(this.model, 'change', this.render);
     this.render();
@@ -17,6 +18,7 @@ const EntryCard = Backbone.View.extend({
   events: {
     'click .btn-edit': 'onEdit',
     'click .btn-cancel': 'onCancel',
+    'click .btn-save': 'onSave',
   },
 
   onEdit: function(e) {
@@ -25,6 +27,15 @@ const EntryCard = Backbone.View.extend({
   },
 
   onCancel: function(e) {
+    this.editing = false;
+    this.render();
+  },
+
+  onSave: function(e) {
+    this.model.updateEntry({
+      name: this.$('.entry-card-name').val()
+    });
+
     this.editing = false;
     this.render();
   },
@@ -50,6 +61,7 @@ const EntryCard = Backbone.View.extend({
   renderControls: function() {
     if(this.editing) {
       return [
+        this.saveBtn,
         this.cancelBtn
       ];
     } else {

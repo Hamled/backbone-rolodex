@@ -12,6 +12,10 @@ const Entry = Backbone.Model.extend({
   //     city
   //     state
   //     postal
+
+  updateEntry: function(entryData) {
+    this.set(entryData);
+  }
 });
 
 // A collection of rolodex entries
