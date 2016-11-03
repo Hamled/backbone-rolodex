@@ -1,8 +1,12 @@
 import Backbone from 'backbone';
+
+import Rolodex from './app/models/rolodex';
 import Entry from './app/models/entry';
-import EntryCard from './app/views/entry_card';
+
+import RolodexView from './app/views/rolodex_view';
 
 
+var rolodex = new Rolodex();
 var charles = new Entry({
   name: 'Charles Ellis',
   organization: 'Ada Developers Academy',
@@ -16,9 +20,23 @@ var charles = new Entry({
   }
 });
 
-var charlesCard = new EntryCard({
-  model: charles,
-  id: 'entry-card-' + charles.id
+var kari = new Entry({
+  name: 'Kari Bancroft',
+  organization: 'Ada Developers Academy',
+  phone: '+12065551235',
+  address: {
+    street1: '456 Fake Ave',
+    street2: '',
+    city: 'Seattle',
+    state: 'WA',
+    postal: '98102'
+  }
 });
 
-Backbone.$('#mount').append(charlesCard.el);
+rolodex.get('entries').add(charles);
+rolodex.get('entries').add(kari);
+
+var rolodexView = new RolodexView({
+  el: '#mount',
+  model: rolodex
+});
