@@ -9,6 +9,7 @@ const ApplicationView = Backbone.View.extend({
 
   // RENDERING
   render: function() {
+    this.$('*').detach();
     this.$el.append(this.renderRolodex(this.model.rolodex()));
     return this;
   },

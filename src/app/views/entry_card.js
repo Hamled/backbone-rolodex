@@ -8,6 +8,7 @@ const EntryCard = Backbone.View.extend({
 
   // RENDERING
   render: function() {
+    this.$('*').detach();
     this.$el.append(this.renderName(this.model.get('name')));
     return this;
   },

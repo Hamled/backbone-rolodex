@@ -9,6 +9,7 @@ const RolodexView = Backbone.View.extend({
 
   // RENDERING
   render: function() {
+    this.$('*').detach();
     this.$el.append(this.model.get('entries').map(function(entry) {
       return new EntryCard({
         model: entry
