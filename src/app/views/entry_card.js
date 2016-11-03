@@ -7,6 +7,7 @@ const EntryCard = Backbone.View.extend({
 
     // Static components
     this.editBtn = Backbone.$('<button class="btn-edit">Edit</button>');
+    this.cancelBtn = Backbone.$('<button class="btn-cancel">Cancel</button>');
 
     this.listenTo(this.model, 'change', this.render);
     this.render();
@@ -14,11 +15,16 @@ const EntryCard = Backbone.View.extend({
 
   // EVENTS
   events: {
-    'click .btn-edit': 'onEdit'
+    'click .btn-edit': 'onEdit',
+    'click .btn-cancel': 'onCancel',
   },
 
   onEdit: function(e) {
     this.editing = true;
+  },
+
+  onCancel: function(e) {
+    this.editing = false;
   },
 
   // RENDERING
