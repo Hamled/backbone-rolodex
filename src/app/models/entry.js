@@ -14,4 +14,10 @@ const Entry = Backbone.Model.extend({
   //     postal
 });
 
+// A collection of rolodex entries
+const Entries = Backbone.Collection.extend({
+  model: Entry
+});
+
 export default Entry;
+export { Entries };
