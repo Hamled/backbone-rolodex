@@ -3,11 +3,22 @@ import Backbone from 'backbone';
 
 const EntryCard = Backbone.View.extend({
   initialize: function() {
+    this.editing = false;
+
     // Static components
     this.editBtn = Backbone.$('<button class="btn-edit">Edit</button>');
 
     this.listenTo(this.model, 'change', this.render);
     this.render();
+  },
+
+  // EVENTS
+  events: {
+    'click .btn-edit': 'onEdit'
+  },
+
+  onEdit: function(e) {
+    this.editing = true;
   },
 
   // RENDERING
