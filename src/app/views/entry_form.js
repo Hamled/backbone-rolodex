@@ -21,6 +21,10 @@ const EntryForm = Backbone.View.extend({
     this.trigger('submit', _.object(fields, _.map(fieldInputs, function(input) {
       return input.val();
     })));
+
+    _.each(fieldInputs, function(input) {
+      input.val("");
+    });
   },
 
   // RENDERING
