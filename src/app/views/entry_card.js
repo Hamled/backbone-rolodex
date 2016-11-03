@@ -40,7 +40,11 @@ const EntryCard = Backbone.View.extend({
   },
 
   renderName: function(name) {
-    return Backbone.$('<p></p>').html(name);
+    if(this.editing) {
+      return Backbone.$('<input type="text" class="entry-card-name">').val(name);
+    } else {
+      return Backbone.$('<p></p>').html(name);
+    }
   },
 
   renderControls: function() {
