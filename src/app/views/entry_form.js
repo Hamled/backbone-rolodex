@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import Backbone from 'backbone';
 
 const EntryForm = Backbone.View.extend({
@@ -20,14 +21,20 @@ const EntryForm = Backbone.View.extend({
   render: function() {
     this.$el.append(Backbone.$(`
       <h3>Add a new entry</h3>
-      <label>
-        Name:
-        <input type="text" class="add-entry-name">
-      </label>
+      ${this.inputTemplate('name')}
       <button class="add-entry-btn">Add</button>
     `));
     return this;
   },
+
+  inputTemplate: function(field) {
+    return `
+      <label>
+        ${_(field).capitalize()}:
+        <input type="text" class="add-entry-${field}">
+      </label>
+    `;
+  }
 });
 
 export default EntryForm;
