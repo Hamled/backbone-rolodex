@@ -1,3 +1,4 @@
+import Util from './util';
 import Backbone from 'backbone';
 
 import Application from './app/models/application';
