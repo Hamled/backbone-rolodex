@@ -1,8 +1,7 @@
 import Backbone from 'backbone';
 
 const EntryForm = Backbone.View.extend({
-  initialize: function(attributes) {
-    this.parent = attributes.parent;
+  initialize: function() {
     this.render();
   },
 
@@ -12,7 +11,7 @@ const EntryForm = Backbone.View.extend({
   },
 
   onAdd: function(e) {
-    this.parent.onAddEntry({
+    this.trigger('submit', {
       name: this.$('.add-entry-name').val()
     });
   },

@@ -5,9 +5,8 @@ import RolodexView from './rolodex_view';
 const ApplicationView = Backbone.View.extend({
   initialize: function() {
     // Static components
-    this.entryForm = new EntryForm({
-      parent: this
-    });
+    this.entryForm = new EntryForm();
+    this.listenTo(this.entryForm, 'submit', this.onAddEntry);
 
     this.listenTo(this.model, 'change', this.render);
     this.render();
