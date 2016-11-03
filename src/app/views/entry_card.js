@@ -21,10 +21,12 @@ const EntryCard = Backbone.View.extend({
 
   onEdit: function(e) {
     this.editing = true;
+    this.render();
   },
 
   onCancel: function(e) {
     this.editing = false;
+    this.render();
   },
 
   // RENDERING
@@ -42,9 +44,15 @@ const EntryCard = Backbone.View.extend({
   },
 
   renderControls: function() {
-    return [
-      this.editBtn
-    ];
+    if(this.editing) {
+      return [
+        this.cancelBtn
+      ];
+    } else {
+      return [
+        this.editBtn
+      ];
+    }
   }
 });
 
