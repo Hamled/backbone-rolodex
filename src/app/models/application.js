@@ -14,6 +14,10 @@ const Application = Backbone.Model.extend({
 
   addEntry: function(entryData) {
     return this.get('rolodex').addEntry(entryData);
+  },
+
+  setFilter: function(filter) {
+    return this.get('rolodex').setFilter(filter);
   }
 });
 

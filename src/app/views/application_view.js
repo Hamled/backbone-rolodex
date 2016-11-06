@@ -9,6 +9,7 @@ const ApplicationView = Backbone.View.extend({
     this.entryForm = new EntryForm();
     this.filterControl = new FilterControl();
     this.listenTo(this.entryForm, 'submit', this.onAddEntry);
+    this.listenTo(this.filterControl, 'submit', this.onSubmitFilter);
 
     this.listenTo(this.model, 'change', this.render);
     this.render();
@@ -17,6 +18,10 @@ const ApplicationView = Backbone.View.extend({
   // EVENTS
   onAddEntry: function(entryData) {
     this.model.addEntry(entryData);
+  },
+
+  onSubmitFilter: function(filter) {
+    this.model.setFilter(filter);
   },
 
   // RENDERING

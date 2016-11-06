@@ -11,6 +11,10 @@ const Rolodex = Backbone.Model.extend({
     this.get('entries').add(new Entry(entryData));
   },
 
+  setFilter: function(filter) {
+    this.set('filter', filter);
+  },
+
   // EVENTS
   onEntriesUpdate: function() {
     this.trigger('change', arguments);
