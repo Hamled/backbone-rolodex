@@ -14,7 +14,7 @@ const ApplicationView = Backbone.View.extend({
 
   // EVENTS
   onAddEntry: function(entryData) {
-    this.model.rolodex().addEntry(entryData);
+    this.model.addEntry(entryData);
   },
 
   // RENDERING
