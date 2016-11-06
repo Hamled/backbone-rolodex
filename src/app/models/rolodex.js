@@ -7,6 +7,11 @@ const Rolodex = Backbone.Model.extend({
     this.listenTo(this.get('entries'), 'update', this.onEntriesUpdate);
   },
 
+  filteredEntries: function() {
+    var filterPred = Entry.filterPred(this.get('filter'));
+    return this.get('entries').filter(filterPred);
+  },
+
   addEntry: function(entryData) {
     this.get('entries').add(new Entry(entryData));
   },

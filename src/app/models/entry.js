@@ -23,6 +23,23 @@ const Entry = Backbone.Model.extend({
       this.collection.remove(this);
     }
   }
+}, {
+  filterPred: function(filter) {
+    var fieldPred = function(value) { return true; };
+
+    if(_.isString(filter) && filter !== "") {
+      filter = filter.toLocaleLowerCase();
+      fieldPred = function(value) {
+        return value.toLocaleLowerCase().includes(filter);
+      };
+    }
+
+    return function(entry) {
+      return _.any(_.map(['name', 'organization', 'phone'], function(field) {
+        return fieldPred(entry.get(field));
+      }));
+    };
+  }
 });
 
 // A collection of rolodex entries
