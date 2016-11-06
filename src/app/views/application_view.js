@@ -1,11 +1,13 @@
 import Backbone from 'backbone';
 import EntryForm from './entry_form';
 import RolodexView from './rolodex_view';
+import FilterControl from './filter_control';
 
 const ApplicationView = Backbone.View.extend({
   initialize: function() {
     // Static components
     this.entryForm = new EntryForm();
+    this.filterControl = new FilterControl();
     this.listenTo(this.entryForm, 'submit', this.onAddEntry);
 
     this.listenTo(this.model, 'change', this.render);
@@ -26,7 +28,10 @@ const ApplicationView = Backbone.View.extend({
   },
 
   renderStatic: function() {
-    this.$el.append(this.entryForm.el);
+    this.$el.append([
+      this.entryForm.el,
+      this.filterControl.el
+    ]);
   },
 
   renderRolodex: function(rolodex) {
