@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import Backbone from 'backbone';
 
 // A single rolodex entry
@@ -15,6 +16,12 @@ const Entry = Backbone.Model.extend({
 
   updateEntry: function(entryData) {
     this.set(entryData);
+  },
+
+  destroyEntry: function() {
+    if(_.has(this, 'collection')) {
+      this.collection.remove(this);
+    }
   }
 });
 

@@ -9,6 +9,7 @@ const EntryCard = Backbone.View.extend({
     this.editBtn = Backbone.$('<button class="btn-edit">Edit</button>');
     this.cancelBtn = Backbone.$('<button class="btn-cancel">Cancel</button>');
     this.saveBtn = Backbone.$('<button class="btn-save">Save</button>');
+    this.deleteBtn = Backbone.$('<button class="btn-delete">Delete</button>');
 
     this.listenTo(this.model, 'change', this.render);
     this.render();
@@ -19,6 +20,7 @@ const EntryCard = Backbone.View.extend({
     'click .btn-edit': 'onEdit',
     'click .btn-cancel': 'onCancel',
     'click .btn-save': 'onSave',
+    'click .btn-delete': 'onDelete',
   },
 
   onEdit: function(e) {
@@ -40,6 +42,10 @@ const EntryCard = Backbone.View.extend({
 
     this.editing = false;
     this.render();
+  },
+
+  onDelete: function(e) {
+    this.model.destroyEntry();
   },
 
   // RENDERING
@@ -71,7 +77,8 @@ const EntryCard = Backbone.View.extend({
       ];
     } else {
       return [
-        this.editBtn
+        this.editBtn,
+        this.deleteBtn
       ];
     }
   }
