@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import Backbone from 'backbone';
 import EntryCard from './entry_card';
 
@@ -10,7 +11,7 @@ const RolodexView = Backbone.View.extend({
   // RENDERING
   render: function() {
     this.$('*').detach();
-    this.$el.append(this.model.get('entries').map(function(entry) {
+    this.$el.append(_.map(this.model.filteredEntries(), function(entry) {
       return new EntryCard({
         model: entry
       }).$el;
