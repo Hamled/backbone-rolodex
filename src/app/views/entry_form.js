@@ -10,14 +10,14 @@ const EntryForm = Backbone.View.extend({
 
   // EVENTS
   events: {
-    'click .add-entry-btn': 'onAdd'
+    'click .add-entry-btn-add': 'onAdd'
   },
 
   onAdd: function(e) {
     var self = this;
     var fields = ['name', 'organization', 'phone'];
     var fieldInputs = _.map(fields, function(field) {
-      return self.$(`.add-entry-${field}`);
+      return self.$(`.add-entry-input-${field}`);
     });
 
     this.trigger('submit', _.object(fields, _.map(fieldInputs, function(input) {
@@ -36,16 +36,16 @@ const EntryForm = Backbone.View.extend({
       ${this.inputTemplate('name')}
       ${this.inputTemplate('organization')}
       ${this.inputTemplate('phone')}
-      <button class="add-entry-btn">Add</button>
+      <button class="add-entry-btn-add">Add</button>
     `));
     return this;
   },
 
   inputTemplate: function(field) {
     return `
-      <label>
+      <label class="add-entry-label-${field}">
         ${_(field).capitalize()}:
-        <input type="text" class="add-entry-${field}">
+        <input type="text" class="add-entry-input-${field}">
       </label>
     `;
   }
