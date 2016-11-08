@@ -1,6 +1,8 @@
 import Backbone from 'backbone';
 
 const FilterControl = Backbone.View.extend({
+  className: 'rolodex-filter',
+
   initialize: function() {
     this.render();
   },
