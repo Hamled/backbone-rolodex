@@ -2,6 +2,8 @@ import _ from 'underscore';
 import Backbone from 'backbone';
 
 const EntryForm = Backbone.View.extend({
+  className: 'add-entry-form',
+
   initialize: function() {
     this.render();
   },
