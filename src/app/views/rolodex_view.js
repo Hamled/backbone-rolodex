@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import Backbone from 'backbone';
-import EntryCard from './entry_card';
+import EntryCard from 'app/views/entry_card';
 
 const RolodexView = Backbone.View.extend({
   initialize: function() {

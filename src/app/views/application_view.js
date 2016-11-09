@@ -1,7 +1,7 @@
 import Backbone from 'backbone';
-import EntryForm from './entry_form';
-import RolodexView from './rolodex_view';
-import FilterControl from './filter_control';
+import EntryForm from 'app/views/entry_form';
+import RolodexView from 'app/views/rolodex_view';
+import FilterControl from 'app/views/filter_control';
 
 const ApplicationView = Backbone.View.extend({
   initialize: function() {

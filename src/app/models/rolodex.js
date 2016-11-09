@@ -1,5 +1,5 @@
 import Backbone from 'backbone';
-import {Entry, Entries} from './entry';
+import {Entry, Entries} from 'app/models/entry';
 
 const Rolodex = Backbone.Model.extend({
   initialize: function() {
