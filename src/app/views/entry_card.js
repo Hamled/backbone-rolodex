@@ -36,9 +36,9 @@ const EntryCard = Backbone.View.extend({
   onSave: function(e) {
     var self = this;
     var fields = ['name', 'organization', 'phone'];
-    this.model.updateEntry(_.object(fields, _.map(fields, function(field) {
+    this.model.updateEntry(_.objectMap(fields, function(field) {
       return self.$(`.entry-card-${field}`).val();
-    })));
+    }));
 
     this.editing = false;
     this.render();
