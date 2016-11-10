@@ -1,9 +1,8 @@
-import Util from './util';
+import Util from 'util';
 import Backbone from 'backbone';
 
-import Application from './app/models/application';
-
-import ApplicationView from './app/views/application_view';
+import Application from 'app/models/application';
+import ApplicationView from 'app/views/application_view';
 
 
 var app = new Application();
