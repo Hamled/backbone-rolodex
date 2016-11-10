@@ -38,4 +38,30 @@ describe('Entry', function() {
       expect(_.filter([one], filterPred)).not.toContain(one);
     });
   });
+
+  describe('#updateEntry', function() {
+    var attrs = ['name', 'organization', 'phone'];
+    _.each(attrs, function(attr) {
+      it(`should set the ${attr} attribute`, function() {
+        var one = fixtures.entry().one;
+
+        var origAttrs = _.objectMap(attrs, function(attr) {
+          return one.get(attr);
+        });
+
+        var newValue = 'new value';
+        one.updateEntry({ [attr]: newValue });
+
+        _.each(origAttrs, function(origValue, origAttr) {
+          if(origAttr === attr) {
+            // Expect the new value was set
+            expect(one.get(attr)).toEqual(newValue);
+          } else {
+            // Expect nothing else changed
+            expect(one.get(origAttr)).toEqual(origValue);
+          }
+        });
+      });
+    });
+  });
 });
