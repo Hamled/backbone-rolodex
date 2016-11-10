@@ -1,6 +1,5 @@
 import _ from 'underscore';
 import Entry from 'app/models/entry';
-import fixtures from 'spec/fixtures';
 
 describe('Entry', function() {
   describe('.filterPred', function() {
@@ -9,7 +8,7 @@ describe('Entry', function() {
     });
 
     it('should filter on name attribute', function() {
-      var one = fixtures.entry().one;
+      var one = fixtures.entry.one;
 
       var filterPred = Entry.filterPred('Person One');
       expect(_.filter([one], filterPred)).toContain(one);
@@ -19,7 +18,7 @@ describe('Entry', function() {
     });
 
     it('should filter on organization attribute', function() {
-      var one = fixtures.entry().one;
+      var one = fixtures.entry.one;
 
       var filterPred = Entry.filterPred('Org One');
       expect(_.filter([one], filterPred)).toContain(one);
@@ -29,7 +28,7 @@ describe('Entry', function() {
     });
 
     it('should filter on phone attribute', function() {
-      var one = fixtures.entry().one;
+      var one = fixtures.entry.one;
 
       var filterPred = Entry.filterPred('Phone One');
       expect(_.filter([one], filterPred)).toContain(one);
@@ -43,7 +42,7 @@ describe('Entry', function() {
     var attrs = ['name', 'organization', 'phone'];
     _.each(attrs, function(attr) {
       it(`should set the ${attr} attribute`, function() {
-        var one = fixtures.entry().one;
+        var one = fixtures.entry.one;
 
         var origAttrs = _.objectMap(attrs, function(attr) {
           return one.get(attr);
